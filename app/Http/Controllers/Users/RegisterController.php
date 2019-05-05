@@ -19,7 +19,7 @@ class RegisterController extends Controller
     public function register(Request $request, User $user)
     {
         // 验证
-        $validatadData = Validator::make($request->except('_token'), [
+        $validatadData = $this->validate($request->except('_token'), [
             'name' => 'required|min:2',
             'email' => 'required|email|unique:users,email',          // unique:users, email      表示 users 表里的 email 字段 是唯一的
             'password' => 'required|min:5|confirmed'
@@ -32,9 +32,9 @@ class RegisterController extends Controller
             'password.confirmed' => '两次密码不一致',
             'password.required' => '密码不得为空'
         ]);
-        if($validatadData->fails()){
-            return redirect()->back()->withErrors($validatadData)->withInput();
-        }
+//        if($validatadData->fails()){
+//            return redirect()->back()->withErrors($validatadData)->withInput();
+//        }
 
         // 逻辑
         $password = bcrypt($request->input('password'));
