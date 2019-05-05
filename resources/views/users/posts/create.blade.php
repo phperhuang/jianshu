@@ -4,7 +4,7 @@
 
 {{--    <h2> Today is running !</h2>--}}
     <div class="col-sm-8 blog-main">
-        <form action="/posts" method="POST">
+        <form action="{{ url('post/store') }}" method="POST">
             {{csrf_field()}}
             <div class="form-group">
                 <label>标题</label>
