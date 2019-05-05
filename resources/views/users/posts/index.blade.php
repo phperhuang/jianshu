@@ -2,7 +2,7 @@
 
 @section("content")
     <div class="col-sm-8 blog-main">
-        @include("post.carousel")
+{{--        @include("post.carousel")--}}
         <div style="height: 20px;">
         </div>
         <div>
