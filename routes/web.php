@@ -19,7 +19,7 @@ Route::group(['middleware' => 'auth:web'], function () {
     Route::get('/post', 'Users\PostController@index');
     Route::group(['prefix' => 'post'], function () {
         Route::get('create', 'Users\PostController@create');
-        Route::get('store', 'Users\PostController@create');
+        Route::post('store', 'Users\PostController@create');
     });
 
 });
