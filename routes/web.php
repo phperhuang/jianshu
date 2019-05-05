@@ -17,7 +17,7 @@ Route::get('/', function () {
 
 //Route::group();
 
-Route::get('/login', 'App\Http\Controllers\Users\LoginController@index');
+Route::get('/login', 'App\Http\Controllers\Users\LoginController@index')->name('login');
 Route::post('/login', 'App\Http\Controllers\Users\LoginController@login');
 Route::get('/logout', 'App\Http\Controllers\Users\LoginController@logout');
 
