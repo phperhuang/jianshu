@@ -81,15 +81,18 @@ cache()->forget('logout_msg');
 
             </div>
             <div class="row">
-                <div class="col-xs-8">
-                    <div class="checkbox icheck">
-                        <label>
-                            {{--<input type="checkbox" name="remember">记住密码--}}
-                            <input type="checkbox">记住密码
-                        </label>
-                    </div>
-                </div>
+{{--                <div class="col-xs-8">--}}
+{{--                    <div class="checkbox icheck">--}}
+{{--                        --}}
+{{--                    </div>--}}
+{{--                </div>--}}
                 <!-- /.col -->
+                <div>
+                    <label>
+                        {{--<input type="checkbox" name="remember">记住密码--}}
+                        <input type="checkbox">记住密码
+                    </label>
+                </div>
                 <div class="col-xs-4">
                     <button type="submit" class="btn btn-primary btn-block btn-flat">登录</button>
                 </div>
