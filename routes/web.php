@@ -15,7 +15,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//Route::group();
+Route::group(['middleware' => 'auth:web'], function () {
+
+});
 
 Route::get('/login', 'Users\LoginController@index')->name('login');
 Route::post('/login', 'Users\LoginController@login');

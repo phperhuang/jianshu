@@ -75,7 +75,7 @@
                 <span class="glyphicon glyphicon-lock form-control-feedback"></span>
             </div>
 
-            @include('common.error')
+            @include('layout.error')
 
             <div class="row">
                 <div class="col-xs-8">

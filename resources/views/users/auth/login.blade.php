@@ -57,30 +57,17 @@ cache()->forget('logout_msg');
         <form method="post" action="{{ url('/login') }}">
             {!! csrf_field() !!}
 
-            <div class="form-group has-feedback {{ $errors->has('email') ? ' has-error' : '' }}">
-                <input type="text" class="form-control" name="email" value="{{ old('email') }}" placeholder="用户名">
-                {{--<span class="glyphicon glyphicon-envelope form-control-feedback"></span>--}}
+            <div class="form-group has-feedback {{ $errors->has('name') ? ' has-error' : '' }}">
+                <input type="text" class="form-control" name="name" value="{{ old('name') }}" placeholder="用户名">
                 <span class="glyphicon glyphicon-user form-control-feedback"></span>
-{{--                @if ($errors->has('email'))--}}
-{{--                    <span class="help-block">--}}
-{{--                    --}}{{--<strong>{{ $errors->first('email') }}</strong>--}}
-{{--                    <strong>账号或者密码错误！</strong>--}}
-{{--                </span>--}}
-{{--                @endif--}}
             </div>
 
             <div class="form-group has-feedback{{ $errors->has('password') ? ' has-error' : '' }}">
                 <input type="password" class="form-control" placeholder="密码" name="password">
                 <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-{{--                @if ($errors->has('password'))--}}
-{{--                    <span class="help-block">--}}
-{{--                    --}}{{--<strong>{{ $errors->first('password') }}</strong>--}}
-{{--                    <strong>账号或者密码错误！</strong>--}}
-{{--                </span>--}}
-{{--                @endif--}}
 
             </div>
-            @include('common.error')
+            @include('layout.error')
             <div class="row">
                 <div class="col-xs-8">
                     <div class="checkbox icheck">
@@ -106,7 +93,6 @@ cache()->forget('logout_msg');
 
 
 <!-- AdminLTE App -->
-{{--<script src="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.4.3/js/adminlte.min.js"></script>--}}
 <script src="{{ url('js/adminlte.min.js') }}"></script>
 
 <script src="{{url('js/icheck.min.js')}}"></script>
