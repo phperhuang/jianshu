@@ -17,6 +17,10 @@ Route::get('/', function () {
 
 Route::group(['middleware' => 'auth:web'], function () {
     Route::get('/post', 'Users\PostController@index');
+    Route::group(['prefix' => 'post'], function () {
+        Route::get('create', 'Users\PostController@index');
+    });
+
 });
 
 Route::get('/login', 'Users\LoginController@index')->name('login');
