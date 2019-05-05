@@ -1,6 +1,6 @@
-@extends("layout.main")
+{{--@extends("layout.main")--}}
 
-@section("content")
+{{--@section("content")--}}
 
     <h2> Today is running !</h2>
 {{--    <div class="col-sm-8 blog-main">--}}
@@ -22,4 +22,4 @@
 {{--    </div>--}}
 
 
-@endsection
+{{--@endsection--}}
