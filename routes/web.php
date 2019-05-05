@@ -14,3 +14,13 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+//Route::group();
+
+Route::get('/login', 'App\Http\Controllers\Users\LoginController@index');
+Route::post('/login', 'App\Http\Controllers\Users\LoginController@login');
+Route::get('/logout', 'App\Http\Controllers\Users\LoginController@logout');
+
+
+
+include_once("admin.php");
