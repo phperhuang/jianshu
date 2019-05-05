@@ -1,0 +1,21 @@
+#recharge {
+    display: none;
+    padding: 20px;
+}
+
+.recharge_money {
+    margin-top: 5px;
+}
+
+.hid, .after_recharge, .is_hid, .after_withdraw, .send_withdraw_callback,
+.send_recharge_callback, .query_recharge_record, .query_withdraw_record,
+.show_recharge, .show_withdraw, .port_withdraw, .hiden{
+    display: none;
+}
+.port_withdraw {
+    padding-right: 15px;
+}
+
+table {
+    text-align: center;
+}

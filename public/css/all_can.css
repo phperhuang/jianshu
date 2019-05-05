@@ -1,0 +1,26 @@
+.deploy_table .text{
+    width: 10%;
+    line-height: 34px;
+}
+
+.deploy_table .sub_backurl {
+    text-align: left;
+}
+
+.rech_caba_search input {
+    height: 33px;
+}
+
+.only_read_caba input[type=checkbox]{
+    height: 13px;
+}
+
+.rech_caba_search .searchid , .rech_caba_search .search_userid, .rech_caba_search .search_platform,
+.rech_caba_search .searchtime, .rech_caba_search .only_read_caba{
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.callback_table tr{
+    text-align: center;
+}
