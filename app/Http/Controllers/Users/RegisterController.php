@@ -19,11 +19,16 @@ class RegisterController extends Controller
     {
         // 验证
         $validatadData = $this->validate($request, [
-            'name' => 'required|min:3',
+            'name' => 'required|min:2',
             'email' => 'required|email|unique:users,email',          // unique:users, email      表示 users 表里的 email 字段 是唯一的
             'password' => 'required|min:5|confirmed'
+        ], [
+            'name.required' => '用户名不得为空',
+            'name.min:3' => '用户名不得小于 2 位',
+            'email.email' => '邮箱格式不正确',
+            'email.unique' => '该邮箱已注册','password.min' => '密码长度不得小于 5 位',
+            'password.confirmed' => '两次密码不一致'
         ]);
-        return $validatadData;
 
         // 逻辑
         $password = bcrypt($request->input('password'));
