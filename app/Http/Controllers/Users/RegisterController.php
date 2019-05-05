@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Users;
 use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
 {
@@ -18,7 +19,7 @@ class RegisterController extends Controller
     public function register(Request $request, User $user)
     {
         // 验证
-        $validatadData = $this->validate($request, [
+        $validatadData = Validator::make($request, [
             'name' => 'required|min:2',
             'email' => 'required|email|unique:users,email',          // unique:users, email      表示 users 表里的 email 字段 是唯一的
             'password' => 'required|min:5|confirmed'
@@ -29,6 +30,9 @@ class RegisterController extends Controller
             'email.unique' => '该邮箱已注册','password.min' => '密码长度不得小于 5 位',
             'password.confirmed' => '两次密码不一致'
         ]);
+        if($validatadData->fails()){
+            return redirect()->back()->withErrors($validatadData)->withInput();
+        }
 
         // 逻辑
         $password = bcrypt($request->input('password'));
