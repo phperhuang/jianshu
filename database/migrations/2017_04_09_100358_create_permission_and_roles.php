@@ -13,12 +13,14 @@ class CreatePermissionAndRoles extends Migration
      */
     public function up()
     {
-        Schema::create("admin_roles", function(Blueprint $table){
-           $table->increments('id');
-           $table->string('name');
-           $table->string('description');
-           $table->timestamps();
-        });
+        if(!Schema::hasTable('admin_roles')){
+            Schema::create("admin_roles", function(Blueprint $table){
+                $table->increments('id');
+                $table->string('name');
+                $table->string('description');
+                $table->timestamps();
+            });
+        }
 
         if(!Schema::hasTable('admin_permissions')){
             Schema::create("admin_permissions", function(Blueprint $table){
@@ -29,18 +31,22 @@ class CreatePermissionAndRoles extends Migration
             });
         }
 
-        Schema::create("admin_permission_role", function(Blueprint $table){
-            $table->increments('id');
-            $table->integer("role_id");
-            $table->integer("permission_id");
-            $table->timestamps();
-        });
+        if(!Schema::hasTable('admin_permission_role')) {
+            Schema::create("admin_permission_role", function (Blueprint $table) {
+                $table->increments('id');
+                $table->integer("role_id");
+                $table->integer("permission_id");
+                $table->timestamps();
+            });
+        }
 
-        Schema::create("admin_role_user", function(Blueprint $table){
-            $table->increments('id');
-            $table->integer("role_id");
-            $table->integer("user_id");
-        });
+        if(!Schema::hasTable('admin_role_user')) {
+            Schema::create("admin_role_user", function (Blueprint $table) {
+                $table->increments('id');
+                $table->integer("role_id");
+                $table->integer("user_id");
+            });
+        }
     }
 
     /**
