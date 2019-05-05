@@ -23,7 +23,7 @@
             <li class="dropdown">
                 <div>
 {{--                    <img src="{{$user->avatar}}" alt="" class="img-rounded" style="border-radius:500px; height: 30px">--}}
-                    <a href="#" class="blog-nav-item dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{$user->name}}  <span class="caret"></span></a>
+                    <a href="#" class="blog-nav-item dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{\Illuminate\Support\Facades\Auth::user()->name}}  <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="/user/{{\Illuminate\Support\Facades\Auth::user()->id}}">我的主页</a></li>
                         <li><a href="/user/{{\Illuminate\Support\Facades\Auth::user()->id}}/setting">个人设置</a></li>
