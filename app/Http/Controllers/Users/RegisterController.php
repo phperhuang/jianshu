@@ -23,6 +23,7 @@ class RegisterController extends Controller
             'email' => 'require|email|unique:users,email',          // unique:users, email      表示 users 表里的 email 字段 是唯一的
             'password' => 'require|min:5|confirmed'
         ]);
+        return $validatadData;
 
         // 逻辑
         $password = bcrypt($request->input('password'));
