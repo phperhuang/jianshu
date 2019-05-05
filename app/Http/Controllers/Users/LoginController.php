@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Users;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-//use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -26,7 +26,10 @@ class LoginController extends Controller
         // 逻辑
         $user = $request->only('name', 'password');
 //        $remember = boolval($request->input('remember'));
-        if(\Auth::guard('web')::attempt($user)){
+
+        $guard = Auth::guard('web');
+
+        if($guard::attempt($user)){
             return redirect('/home');
         }
 
