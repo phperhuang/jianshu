@@ -29,7 +29,7 @@ class LoginController extends Controller
 
         $guard = Auth::guard('web');
 
-        if($guard::attempt($user)){
+        if(Auth::attempt($user)){
             return redirect('/home');
         }
 
