@@ -26,9 +26,11 @@ class RegisterController extends Controller
         ], [
             'name.required' => '用户名不得为空',
             'name.min:3' => '用户名不得小于 2 位',
+            'email.required' => '邮箱不得为空',
             'email.email' => '邮箱格式不正确',
             'email.unique' => '该邮箱已注册','password.min' => '密码长度不得小于 5 位',
-            'password.confirmed' => '两次密码不一致'
+            'password.confirmed' => '两次密码不一致',
+            'password.required' => '密码不得为空'
         ]);
         if($validatadData->fails()){
             return redirect()->back()->withErrors($validatadData)->withInput();
