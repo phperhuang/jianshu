@@ -19,7 +19,7 @@ class RegisterController extends Controller
     public function register(Request $request, User $user)
     {
         // 验证
-        $validatadData = Validator::make($request, [
+        $validatadData = Validator::make($request->except('_token'), [
             'name' => 'required|min:2',
             'email' => 'required|email|unique:users,email',          // unique:users, email      表示 users 表里的 email 字段 是唯一的
             'password' => 'required|min:5|confirmed'
