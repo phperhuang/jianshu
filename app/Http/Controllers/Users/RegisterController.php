@@ -19,9 +19,9 @@ class RegisterController extends Controller
     {
         // 验证
         $validatadData = $this->validate($request, [
-            'name' => 'require|min:3',
-            'email' => 'require|email|unique:users,email',          // unique:users, email      表示 users 表里的 email 字段 是唯一的
-            'password' => 'require|min:5|confirmed'
+            'name' => 'required|min:3',
+            'email' => 'required|email|unique:users,email',          // unique:users, email      表示 users 表里的 email 字段 是唯一的
+            'password' => 'required|min:5|confirmed'
         ]);
         return $validatadData;
 
