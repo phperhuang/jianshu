@@ -21,6 +21,9 @@ Route::get('/login', 'Users\LoginController@index')->name('login');
 Route::post('/login', 'Users\LoginController@login');
 Route::get('/logout', 'Users\LoginController@logout');
 
+Route::get('/register', 'Users\RegisterController@index');
+Route::post('/register', 'Users\RegisterController@register');
+
 
 
 include_once("admin.php");

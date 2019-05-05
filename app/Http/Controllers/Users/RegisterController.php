@@ -12,4 +12,9 @@ class RegisterController extends Controller
         return view('users.auth.register');
     }
 
+    public function register()
+    {
+
+    }
+
 }
