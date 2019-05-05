@@ -32,9 +32,6 @@ class RegisterController extends Controller
             'password.confirmed' => '两次密码不一致',
             'password.required' => '密码不得为空'
         ]);
-//        if($validatadData->fails()){
-//            return redirect()->back()->withErrors($validatadData)->withInput();
-//        }
 
         // 逻辑
         $password = bcrypt($request->input('password'));

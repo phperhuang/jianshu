@@ -86,7 +86,8 @@ cache()->forget('logout_msg');
                     <div class="checkbox icheck">
                         <label>
                             {{--<input type="checkbox" name="remember">记住密码--}}
-                            <input type="checkbox">记住密码
+{{--                            <input type="checkbox">记住密码--}}
+                            <a href="{{ url('/register') }}">注册新用户</a>
                         </label>
                     </div>
                 </div>
