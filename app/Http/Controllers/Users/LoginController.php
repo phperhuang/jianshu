@@ -15,6 +15,11 @@ class LoginController extends Controller
 
     public function login()
     {
+        // 检验
+
+        // 逻辑
+
+        // 渲染
 
     }
 

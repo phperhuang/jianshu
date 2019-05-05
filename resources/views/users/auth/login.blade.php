@@ -61,25 +61,26 @@ cache()->forget('logout_msg');
                 <input type="text" class="form-control" name="email" value="{{ old('email') }}" placeholder="用户名">
                 {{--<span class="glyphicon glyphicon-envelope form-control-feedback"></span>--}}
                 <span class="glyphicon glyphicon-user form-control-feedback"></span>
-                @if ($errors->has('email'))
-                    <span class="help-block">
-                    {{--<strong>{{ $errors->first('email') }}</strong>--}}
-                    <strong>账号或者密码错误！</strong>
-                </span>
-                @endif
+{{--                @if ($errors->has('email'))--}}
+{{--                    <span class="help-block">--}}
+{{--                    --}}{{--<strong>{{ $errors->first('email') }}</strong>--}}
+{{--                    <strong>账号或者密码错误！</strong>--}}
+{{--                </span>--}}
+{{--                @endif--}}
             </div>
 
             <div class="form-group has-feedback{{ $errors->has('password') ? ' has-error' : '' }}">
                 <input type="password" class="form-control" placeholder="密码" name="password">
                 <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-                @if ($errors->has('password'))
-                    <span class="help-block">
-                    {{--<strong>{{ $errors->first('password') }}</strong>--}}
-                    <strong>账号或者密码错误！</strong>
-                </span>
-                @endif
+{{--                @if ($errors->has('password'))--}}
+{{--                    <span class="help-block">--}}
+{{--                    --}}{{--<strong>{{ $errors->first('password') }}</strong>--}}
+{{--                    <strong>账号或者密码错误！</strong>--}}
+{{--                </span>--}}
+{{--                @endif--}}
 
             </div>
+            @include('common.error')
             <div class="row">
                 <div class="col-xs-8">
                     <div class="checkbox icheck">
