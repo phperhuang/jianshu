@@ -26,7 +26,7 @@ class LoginController extends Controller
         // 逻辑
         $user = $request->only('name', 'password');
 //        $remember = boolval($request->input('remember'));
-        if(\Authguard('web')->attempt($user)){
+        if(\Auth::guard('web')->attempt($user)){
             return redirect('/home');
         }
 
