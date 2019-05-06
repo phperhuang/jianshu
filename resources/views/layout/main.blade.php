@@ -46,7 +46,7 @@
     </div><!-- /.row -->
 </div><!-- /.container -->
 
-@include("layout.footer")
+{{--@include("layout.footer")--}}
 
 {{--@yield("pagejs")--}}
 <!-- Bootstrap core JavaScript
