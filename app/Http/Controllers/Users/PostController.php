@@ -60,11 +60,16 @@ class PostController extends Controller
         return view('users.posts.edit')->with('post', $postInfo);
     }
 
-    public function update(Post $post)
+    public function update(Post $post, Request $request, $id)
     {
         // 验证
+        $validatorData = $this->validate($request, ['title' => 'required|min:3', 'content' => 'required|min:15'], [
+            'title.required' => '标题不能为空', 'title.min' => '标题不得少于 3 个字',
+            'content.required' => '文章内容不得为空', 'content.min' => '文章内容不得少于 15 个字'
+        ]);
 
         // 逻辑
+        $post->where('id', $id)->update(compact($request->input('title'), $request->input('content')));
 
         // 渲染
         return redirect('post');
