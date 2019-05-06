@@ -13,6 +13,8 @@ class PostController extends Controller
 
     public function index()
     {
+        $post = Post::orderBy('created_at', 'desc')->get();
+        return $post;
         return view('users.posts.index');
     }
 
