@@ -50,7 +50,7 @@ class PostController extends Controller
     public function delete(Post $post, $id)
     {
         $post->where('id', $id)->delete();
-        return redirect()->back();
+        return redirect('post');
     }
 
 }
