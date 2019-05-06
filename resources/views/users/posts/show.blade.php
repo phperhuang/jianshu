@@ -9,7 +9,7 @@
             <div style="display:inline-flex">
                     <h2 class="blog-post-title">{{$post->title}}</h2>
                     @if (Auth::user()->can('update', $post))
-                    <a style="margin: auto"  href="/posts/{{$post->id}}/edit">
+                    <a style="margin: auto"  href='{{ url("post/edit/$post->id") }}'>
                         <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                     </a>
                     @endif

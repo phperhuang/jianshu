@@ -53,4 +53,21 @@ class PostController extends Controller
         return redirect('post');
     }
 
+    // 跳转到修改页面
+    public function edit(Post $post, $id)
+    {
+        $postInfo = $post->find($id);
+        return view('users.posts.edit')->with('post', $postInfo);
+    }
+
+    public function update(Post $post)
+    {
+        // 验证
+
+        // 逻辑
+
+        // 渲染
+        return redirect('post');
+    }
+
 }
