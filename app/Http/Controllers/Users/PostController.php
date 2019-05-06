@@ -41,9 +41,10 @@ class PostController extends Controller
         return redirect('/post');
     }
 
-    public function show(\App\Post $post)
+    public function show(\App\Post $post, $id)
     {
-        return $post;
+        $postInfo = $post->find($id);
+        return $postInfo;
         return view('users.posts.show')->with('post', $post);
     }
 
