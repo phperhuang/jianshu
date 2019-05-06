@@ -43,7 +43,7 @@ class PostController extends Controller
 
     public function show(\App\Post $post, $id)
     {
-        $postInfo = $post->find($id);
+        $postInfo = $post->with('user')->withCount('fans', 'zans')->find($id);
         return $postInfo;
         return view('users.posts.show')->with('post', $post);
     }
