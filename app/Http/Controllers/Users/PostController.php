@@ -13,9 +13,9 @@ class PostController extends Controller
 
     public function index()
     {
-        $post = Post::orderBy('created_at', 'desc')->with('user')->get();
-        return $post;
-        return view('users.posts.index');
+        $posts = Post::orderBy('created_at', 'desc')->with('user')->get();
+//        return $post;
+        return view('users.posts.index')->with(compact('posts'));
     }
 
     public function create()
