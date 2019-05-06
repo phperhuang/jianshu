@@ -68,6 +68,7 @@ class PostController extends Controller
             'content.required' => '文章内容不得为空', 'content.min' => '文章内容不得少于 15 个字'
         ]);
 
+        return compact($request->input('title'), $request->input('content'));
         // 逻辑
         $post->where('id', $id)->update(compact($request->input('title'), $request->input('content')));
 
