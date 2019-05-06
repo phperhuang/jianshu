@@ -22,6 +22,7 @@ Route::group(['middleware' => 'auth:web'], function () {
         Route::post('store', 'Users\PostController@store');
         Route::get('show/{id}', 'Users\PostController@show');
         Route::get('edit/{id}', 'Users\PostController@show');
+        Route::get('delete/{id}', 'Users\PostController@delete');
     });
 
 });

@@ -14,7 +14,8 @@
                     </a>
                     @endif
                     @if (Auth::user()->can('update', $post))
-                    <a style="margin: auto"  href="/posts/{{$post->id}}/delete">
+{{--                    <a style="margin: auto"  href="/posts/{{$post->id}}/delete">--}}
+                    <a style="margin: auto"  href='{{ url("post/delete/$post->id") }}'>
                         <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                     </a>
                     @endif

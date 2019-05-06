@@ -47,4 +47,10 @@ class PostController extends Controller
         return view('users.posts.show')->with('post', $postInfo);
     }
 
+    public function delete(Post $post, $id)
+    {
+        $post->where('id', $id)->delete();
+        return redirect()->back();
+    }
+
 }
