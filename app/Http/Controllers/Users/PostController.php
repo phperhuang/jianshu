@@ -68,6 +68,7 @@ class PostController extends Controller
             'content.required' => '文章内容不得为空', 'content.min' => '文章内容不得少于 15 个字'
         ]);
 
+        return $this->authorize('update', $post);
         try{
             $this->authorize('update', $post);
         }catch(\Exception $e){
