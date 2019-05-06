@@ -41,4 +41,9 @@ class PostController extends Controller
         return redirect('/post');
     }
 
+    public function show(Post $post)
+    {
+        return view('users.posts.show')->with('post', $post);
+    }
+
 }
