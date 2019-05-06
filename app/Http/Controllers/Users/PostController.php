@@ -43,6 +43,7 @@ class PostController extends Controller
 
     public function show(Post $post)
     {
+        return $post;
         return view('users.posts.show')->with('post', $post);
     }
 
