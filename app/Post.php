@@ -15,4 +15,16 @@ class Post extends Model
         return $this->belongsTo('App\User', 'user_id', 'id');
     }
 
+    // 赞
+    public function zans()
+    {
+        return $this->hasMany('App\Zan')->orderBy('created_at', 'desc');
+    }
+
+    // 评论
+    public function comments()
+    {
+        return $this->hasMany('App\Comment')->orderBy('created_at', 'desc');
+    }
+
 }
