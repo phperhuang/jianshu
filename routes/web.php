@@ -17,7 +17,7 @@ Route::get('/', function () {
 
 Route::group(['middleware' => 'auth:web'], function () {
     Route::get('/post', 'Users\PostController@index');
-    Route::group(['prefix' => 'post', 'middleware' => 'can:post'], function () {
+    Route::group(['prefix' => 'post'], function () {
         Route::get('create', 'Users\PostController@create');
         Route::post('store', 'Users\PostController@store');
         Route::get('show/{id}', 'Users\PostController@show');
