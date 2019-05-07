@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('get-session', function () {
+   return session()->all();
+});
+
 Route::group(['middleware' => 'auth:web'], function () {
     Route::get('/post', 'Users\PostController@index');
     Route::group(['prefix' => 'post'], function () {
