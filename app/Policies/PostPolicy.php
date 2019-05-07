@@ -22,8 +22,8 @@ class PostPolicy
 
     public function update(User $user, Post $post)
     {
-        session()->put('userid', $user->id);
-        session()->put('post_userid', $post->user_id);
+        session()->put('userid', $user);
+        session()->put('post_userid', $post);
         return $user->id === $post->user_id;
     }
 

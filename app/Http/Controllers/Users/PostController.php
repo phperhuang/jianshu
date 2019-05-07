@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Users;
 
 use App\Http\Controllers\Controller;
 use App\Post;
+use App\User;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -60,9 +61,11 @@ class PostController extends Controller
         return view('users.posts.edit')->with('post', $postInfo);
     }
 
-    public function update(Post $post, Request $request, $id)
+    public function update(Post $post, Request $request, $id, User $user)
     {
         var_dump($post->id);
+
+        var_dump($user);
 
         dd($post);
         // 验证
