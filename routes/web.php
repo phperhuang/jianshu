@@ -30,6 +30,8 @@ Route::group(['middleware' => 'auth:web'], function () {
         Route::post('update/{id}', 'Users\PostController@update');
         Route::post('comments', 'Users\PostController@comments');
         Route::post('del-comment', 'Users\PostController@delComment');
+        Route::post('zan', 'Users\PostController@zan');
+        Route::post('unzan', 'Users\PostController@unzan');
     });
 
     Route::get('user/{id}', 'Users\UserController@index');

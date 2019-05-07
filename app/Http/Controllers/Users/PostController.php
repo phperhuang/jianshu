@@ -8,6 +8,7 @@ use App\Comment;
 use App\Http\Controllers\Controller;
 use App\Post;
 use App\User;
+use App\Zan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -91,6 +92,20 @@ class PostController extends Controller
     public function delComment(Request $request)
     {
 
+    }
+
+    // 点赞
+    public function zan(Zan $zan, Request $request)
+    {
+        $zanData = ['post_id' => $request->input('post_id'), 'user_id' => Auth::id()];
+        $zan->create($zanData);
+    }
+
+    // 取消点赞
+    public function unzan(Request $request, Zan $zan)
+    {
+        $post_id = $request->input('post_id');
+        $zan->where('post_id', $post_id)->where('user_id', Auth::id())->delete();
     }
 
 }

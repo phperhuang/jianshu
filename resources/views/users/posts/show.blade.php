@@ -7,30 +7,31 @@
     <div class="col-sm-8 blog-main">
         <div class="blog-post">
             <div style="display:inline-flex">
-                    <h2 class="blog-post-title">{{$post->title}}</h2>
+                    <h2 class="blog-post-title">{{$post->title}}
+                        @if($post->hasZan(\Auth::id())->exists())
+{{--                            <a href='{{ url("post/unzan/$post->id") }}' type="button" class="btn btn-success btn-xs cancel">取消赞</a>--}}
+                            <a href='javascript:void(0)' type="button" class="btn btn-success btn-xs cancel zan">取消赞</a>
+                        @else
+{{--                            <a href='{{ url("post/zan/$post->id") }}' type="button" class="btn btn-success btn-xs like">点赞</a>--}}
+                            <a href='javascript:void(0)' type="button" class="btn btn-success btn-xs like zan">点赞</a>
+                        @endif
+                    </h2>
                     @if (Auth::user()->can('update', $post))
-                    <a style="margin: auto"  href='{{ url("post/edit/$post->id") }}'>
+                    <a style="margin: auto; padding-top: 15px; padding-left: 5px;"  href='{{ url("post/edit/$post->id") }}'>
                         <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                     </a>
                     @endif
                     @if (Auth::user()->can('update', $post))
-{{--                    <a style="margin: auto"  href="/posts/{{$post->id}}/delete">--}}
-                    <a style="margin: auto"  href='{{ url("post/delete/$post->id") }}'>
+                    <a style="margin: auto; padding-top: 15px; padding-left: 5px;"  href='{{ url("post/delete/$post->id") }}'>
                         <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                     </a>
                     @endif
             </div>
 
-            <p class="blog-post-meta">{{$post->created_at->toFormattedDateString()}} by <a href="#">{{$post->user->name}}</a></p>
+            <p class="blog-post-meta">{{$post->created_at->toFormattedDateString()}} by <a href="javascript:void(0)">{{$post->user->name}}</a></p>
 
             <p>{!! $post->content !!}</p>
 {{--            <div>--}}
-{{--                @if($post->zan(\Auth::id())->exists())--}}
-{{--                    <a href="/posts/{{$post->id}}/unzan" type="button" class="btn btn-default btn-lg">取消赞</a>--}}
-{{--                @else--}}
-{{--                    <a href="/posts/{{$post->id}}/zan" type="button" class="btn btn-primary btn-lg">赞</a>--}}
-{{--                @endif--}}
-
 {{--            </div>--}}
         </div>
 
@@ -72,6 +73,32 @@
         @include('layout.error')
     </div><!-- /.blog-main -->
 
+    <script src="{{ url('js/jquery.min.js') }}"></script>
+    <script type="text/javascript">
+        $(function () {
+            var post_id = "{{ $post->id }}";
+            $('.zan').on('click', function () {
+                var url = '';
+                let str = $('.zan').attr('class');
+                str = str.split(' ');
+                for (let i = 0; i < str.length; i++){
+                    if(str[i] === 'like'){
+                        url = '{{ url("post/zan") }}';
+                        $('.zan').text('取消赞').attr('class', 'btn btn-success btn-xs cancel zan');
+                        break;
+                    }else if(str[i] === 'cancel'){
+                        url = '{{ url("post/unzan") }}';
+                        $('.zan').text('点赞').attr('class', 'btn btn-success btn-xs like zan');
+                        break;
+                    }
+                }
+                chooseLike(url, post_id);
+            });
+        });
 
+        function chooseLike(url, post_id){
+            $.post(url, {post_id : post_id, _token : "{{ csrf_token() }}"}, function (data) {});
+        }
+    </script>
 
 @endsection
