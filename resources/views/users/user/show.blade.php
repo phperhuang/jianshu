@@ -12,8 +12,8 @@
     <div class="col-sm-8">
         <blockquote>
             <p><img src="{{$user->avatar}}" alt="" class="img-rounded" style="border-radius:500px; height: 40px"> {{$user->name}}
+                @include('users.user.badges.like', ['target_user' => $user])
             </p><footer>关注：{{$user->stars_count}}｜粉丝：{{$user->fans_count}}｜文章：{{$user->posts_count}}</footer>
-            @include('users.user.badges.like', ['target_user' => $user])
         </blockquote>
     </div>
 
