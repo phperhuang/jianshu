@@ -64,18 +64,6 @@ class PostController extends Controller
 
     public function update(Post $post, Request $request, $id, User $user)
     {
-
-        if(Auth::user()->can('update', $post)){
-            return '可以编辑';
-        }else{
-            return '不可以编辑';
-        }
-
-        var_dump($post->id);
-
-        var_dump($user->id);
-
-        dd($post);
         // 验证
         $validatorData = $this->validate($request, ['title' => 'required|min:3', 'content' => 'required|min:15'], [
             'title.required' => '标题不能为空', 'title.min' => '标题不得少于 3 个字',
