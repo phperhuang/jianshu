@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Post;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -63,6 +64,13 @@ class PostController extends Controller
 
     public function update(Post $post, Request $request, $id, User $user)
     {
+
+        if(Auth::user()->can('update', $post)){
+            return '可以编辑';
+        }else{
+            return '不可以编辑';
+        }
+
         var_dump($post->id);
 
         var_dump($user->id);
