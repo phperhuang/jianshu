@@ -32,6 +32,8 @@ Route::group(['middleware' => 'auth:web'], function () {
         Route::post('del-comment', 'Users\PostController@delComment');
     });
 
+    Route::get('user/{id}', 'Users\UserController@index');
+
 });
 
 Route::get('/login', 'Users\LoginController@index')->name('login');
