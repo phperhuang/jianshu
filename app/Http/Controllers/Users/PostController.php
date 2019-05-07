@@ -62,7 +62,7 @@ class PostController extends Controller
         return view('users.posts.edit')->with('post', $postInfo);
     }
 
-    public function update(Post $post, Request $request, $id, User $user)
+    public function update(Post $post, Request $request, $id)
     {
         // 验证
         $validatorData = $this->validate($request, ['title' => 'required|min:3', 'content' => 'required|min:15'], [

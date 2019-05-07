@@ -5,7 +5,6 @@ namespace App\Policies;
 use App\Post;
 use App\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
-use Illuminate\Support\Facades\Auth;
 
 class PostPolicy
 {
@@ -26,7 +25,6 @@ class PostPolicy
         session()->put('userid', $post->user_id);
         session()->put('post_userid', $user->user_id);
         return $post->user_id === $user->id;
-//        return $user->id === $post->user_id;
     }
 
 }
