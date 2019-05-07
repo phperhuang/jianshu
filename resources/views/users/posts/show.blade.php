@@ -57,7 +57,7 @@
 
             <!-- List group -->
             <ul class="list-group">
-                <form action="/posts/comment" method="post">
+                <form action="{{ url('post/comments') }}" method="post">
                     {{csrf_field()}}
                     <input type="hidden" name="post_id" value="{{$post->id}}"/>
                     <li class="list-group-item">
@@ -69,6 +69,7 @@
             </ul>
         </div>
 
+        @include('layout.error')
     </div><!-- /.blog-main -->
 
 

@@ -19,10 +19,6 @@ Route::get('get-session', function () {
    return session()->all();
 });
 
-Route::get('del-session', function () {
-    return session()->forget(['userid', 'post_userid']);
-});
-
 Route::group(['middleware' => 'auth:web'], function () {
     Route::get('/post', 'Users\PostController@index');
     Route::group(['prefix' => 'post'], function () {
@@ -32,6 +28,8 @@ Route::group(['middleware' => 'auth:web'], function () {
         Route::get('edit/{id}', 'Users\PostController@edit');
         Route::get('delete/{id}', 'Users\PostController@delete');
         Route::post('update/{id}', 'Users\PostController@update');
+        Route::post('comments', 'Users\PostController@comments');
+        Route::post('del-comment', 'Users\PostController@delComment');
     });
 
 });
