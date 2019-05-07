@@ -65,7 +65,7 @@ class PostController extends Controller
     {
         var_dump($post->id);
 
-        var_dump($user);
+        var_dump($user->id);
 
         dd($post);
         // 验证
