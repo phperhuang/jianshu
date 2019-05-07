@@ -70,8 +70,9 @@ class PostController extends Controller
             'content.required' => '文章内容不得为空', 'content.min' => '文章内容不得少于 15 个字'
         ]);
 
+        $postInfo = $post->find($id, ['id', 'user_id']);
         try{
-            $this->authorize('update', $post);
+            $this->authorize('update', $postInfo);
         }catch(\Exception $e){
             return redirect()->back()->withErrors('你没有权限修改这篇文章');
         }
