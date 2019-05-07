@@ -62,7 +62,7 @@ class PostController extends Controller
 
     public function update(Post $post, Request $request, $id)
     {
-        return $post->user_id;
+        return $post->id;
         // 验证
         $validatorData = $this->validate($request, ['title' => 'required|min:3', 'content' => 'required|min:15'], [
             'title.required' => '标题不能为空', 'title.min' => '标题不得少于 3 个字',
