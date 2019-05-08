@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('get-session', function () {
+   return session()->all();
+});
+
 Route::group(['middleware' => 'auth:web'], function () {
     Route::get('/post', 'Users\PostController@index');
     Route::group(['prefix' => 'post'], function () {
@@ -24,6 +28,17 @@ Route::group(['middleware' => 'auth:web'], function () {
         Route::get('edit/{id}', 'Users\PostController@edit');
         Route::get('delete/{id}', 'Users\PostController@delete');
         Route::post('update/{id}', 'Users\PostController@update');
+        Route::post('comments', 'Users\PostController@comments');
+        Route::post('del-comment', 'Users\PostController@delComment');
+        Route::post('zan', 'Users\PostController@zan');
+        Route::post('unzan', 'Users\PostController@unzan');
+    });
+
+    Route::get('user/{id}', 'Users\UserController@index');
+    Route::group(['prefix' => 'user'], function () {
+        Route::post('fan', 'Users\UserController@fan');
+        Route::get('me/setting', 'Users\UserController@settingIndex');
+        Route::post('me/setting', 'Users\UserController@settingStore');
     });
 
 });
