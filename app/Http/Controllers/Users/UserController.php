@@ -47,8 +47,7 @@ class UserController extends Controller
 
     public function settingStore(Request $request, User $user)
     {
-        return env("APP_URL") . ('/public/storage/avatar') . $_FILES['avatar']['name'];
-//        return env("APP_URL") . "/storage/app/public/avatar/" . $_FILES['avatar']['name'];
+//        return env("APP_URL") . '\storage\avatar\\' . $_FILES['avatar']['name'];
         $name = $request->input('name');
         $avatar = $_FILES['avatar'];
         if($name !== Auth::user()->name){
@@ -58,10 +57,13 @@ class UserController extends Controller
             $user->where('id', Auth::id())->update(['name' => $name]);
         }
         if($avatar){
-            if(!is_dir(storage_path('app\public\avatar'))){
-                mkdir(storage_path('app\public\avatar'), 0777);
+            if(!is_dir(public_path('\storage\avatar'))){
+                mkdir(public_path('\storage\avatar'), 0777, true);
             }
             move_uploaded_file($_FILES['avatar']['tmp_name'], public_path('\storage\avatar') . '\\' . $_FILES['avatar']['name']);
+            // '\storage\avatar\\' . $_FILES['avatar']['name']
+            $avatar_path = '\storage\avatar\\' . $_FILES['avatar']['name'];
+            $user->where('id', Auth::id())->update(['avatar' => $avatar_path]);
         }
         return redirect()->action('Users\UserController@settingIndex');
     }
