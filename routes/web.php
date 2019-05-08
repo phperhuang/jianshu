@@ -37,7 +37,8 @@ Route::group(['middleware' => 'auth:web'], function () {
     Route::get('user/{id}', 'Users\UserController@index');
     Route::group(['prefix' => 'user'], function () {
         Route::post('fan', 'Users\UserController@fan');
-        Route::post('unfan', 'Users\UserController@unfan');
+        Route::get('me/setting', 'Users\UserController@settingIndex');
+        Route::post('me/setting', 'Users\UserController@settingStore');
     });
 
 });

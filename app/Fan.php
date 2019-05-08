@@ -11,6 +11,8 @@ class Fan extends Model
 
     protected $table = 'fans';
 
+    protected $fillable = ['fan_id', 'star_id'];
+
     /*
      * 粉丝用户
      */
