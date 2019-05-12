@@ -47,7 +47,6 @@ class UserController extends Controller
 
     public function settingStore(Request $request, User $user)
     {
-//        return env("APP_URL") . '\storage\avatar\\' . $_FILES['avatar']['name'];
         $name = $request->input('name');
         $avatar = $_FILES['avatar'];
         if($name !== Auth::user()->name){
@@ -61,7 +60,6 @@ class UserController extends Controller
                 mkdir(public_path('\storage\avatar'), 0777, true);
             }
             move_uploaded_file($_FILES['avatar']['tmp_name'], public_path('\storage\avatar') . '\\' . $_FILES['avatar']['name']);
-            // '\storage\avatar\\' . $_FILES['avatar']['name']
             $avatar_path = '\storage\avatar\\' . $_FILES['avatar']['name'];
             $user->where('id', Auth::id())->update(['avatar' => $avatar_path]);
         }
