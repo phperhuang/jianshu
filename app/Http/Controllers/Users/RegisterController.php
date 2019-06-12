@@ -6,9 +6,17 @@ use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+//use App\Http\Controllers\RedisController;
+use Illuminate\Support\Facades\Redis;
 
 class RegisterController extends Controller
 {
+    public $redis;
+
+    public function __construct()
+    {
+//        $this->redis = new RedisController();
+    }
 
     public function index()
     {
@@ -41,6 +49,58 @@ class RegisterController extends Controller
 
         // 渲染
         return redirect('/login');
+    }
+
+    public function testRedis()
+    {
+//        var_dump($this->redis->strSet('age', 18));
+//        var_dump($this->redis->strGet('age'));
+//        Redis::set('height', 168);
+//        echo Redis::get('height');
+//        echo "<br>";
+//        Redis::flushDB();
+//        var_dump(Redis::get('height'));
+//        Redis::setex('weight', 30, '65kg');
+//        sleep(2);
+//        echo Redis::ttl('weight') . "<br>";
+//        echo Redis::get('weight');
+//        Redis::sAdd('key1', 'member1');
+//        Redis::sAdd('key1', 'member2');
+//        Redis::sAdd('key1', 'member3');
+//        echo Redis::sCard('key1') . "<br>";
+//        var_dump(Redis::sRandMember('key1'));
+        Redis::flushDB();
+        Redis::sAdd('user', 'Lee');
+        Redis::sAdd('user', 'Lees');
+        Redis::sAdd('user', 'Leess');
+        Redis::sAdd('user', 'Leesss');
+        Redis::sAdd('user', 'Leessss');
+        Redis::sAdd('admin', 'Lee');
+        Redis::sAdd('admin', 'Leess');
+        Redis::sAdd('admin', 'Leek');
+        Redis::sAdd('boss', 'Lee');
+        Redis::sAdd('boss', 'boss');
+        Redis::sAdd('boss', 'Leek');
+        Redis::sAdd('boss', 'Lees');
+
+        print_r(Redis::sInter('user', 'admin', 'boss'));
+        echo "<br>";
+        print_r(Redis::sUnion('user', 'admin', 'boss'));
+        echo "<br>";
+//        var_dump(Redis::sMembers('union'));
+//        echo "<br>";
+//        var_dump(Redis::sMembers('admin'));
+
+    }
+
+    public function getTtl()
+    {
+//        echo Redis::ttl('weight') . "<br>";
+//        if(!Redis::exists('foot')){
+//            Redis::set('foot', 2);
+//        }
+//        echo Redis::get('foot') . "<br>";
+//        echo Redis::ttl('foot');
     }
 
 }

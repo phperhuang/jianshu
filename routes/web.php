@@ -49,6 +49,9 @@ Route::get('/logout', 'Users\LoginController@logout');
 
 Route::get('/register', 'Users\RegisterController@index');
 Route::post('/register', 'Users\RegisterController@register');
+Route::get('/test.redis', 'Users\RegisterController@testRedis');
+Route::get('/get.ttl', 'Users\RegisterController@getTtl');
+
 
 
 

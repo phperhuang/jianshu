@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Users;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Redis\Connections\PredisConnection;
 use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
@@ -39,6 +40,10 @@ class LoginController extends Controller
     {
         Auth::logout();
         return redirect('/login');
+    }
+
+    public function getRedis()
+    {
     }
 
 
